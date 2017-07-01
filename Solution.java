@@ -1,4 +1,4 @@
-package com.saambh.account;
+package com.saambh.contest.BV.HotelList;
 
 import java.util.Scanner;
 
@@ -6,13 +6,16 @@ public class Solution {
 
   public static void main(String[] args) {
     Scanner in = new Scanner(System.in);
-    int n = in.nextInt();
-    int m = in.nextInt();
-    int[] a = new int[m];
-    for (int i = 0; i < m; i++) {
-      a[i] = in.nextInt();
+    String keyWordLine = in.nextLine();
+
+    HotelReview hotelReview = new HotelReview(keyWordLine.split(" "));
+    int t = in.nextInt();
+    while (t-- > 0) {
+      long hotelId = in.nextLong();
+      in.nextLine();
+      String review = in.nextLine();
+      hotelReview.addReview(hotelId, review);
     }
-    Wallet wallet = new Wallet(m, a);
-    System.out.println(wallet.noOfWays(n));
+    System.out.println(hotelReview.getSortedHotels());
   }
 }
